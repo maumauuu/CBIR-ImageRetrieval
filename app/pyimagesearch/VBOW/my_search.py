@@ -13,7 +13,7 @@ with open('app/index_test.txt', 'rb') as handle:
 print(b)
 
 # load the query image and describe it
-query = cv2.imread('app/static/queries/103100.jpg',cv2.COLOR_BGR2HSV)
+query = cv2.imread('app/static/queries/103100.jpg', cv2.COLOR_BGR2HSV)
 hist = d.hist(query, b['103100.jpg'])
 
 

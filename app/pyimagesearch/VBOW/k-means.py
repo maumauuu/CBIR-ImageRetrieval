@@ -14,7 +14,7 @@ desc = []
 # open the output index file for writing
 #output = open('app/index2.csv', "w")
 
-bar = progressbar.ProgressBar(max_value=11).start()
+#bar = progressbar.ProgressBar(max_value=11).start()
 
 i =0
 # use glob to grab the image paths and loop over them
@@ -29,8 +29,9 @@ for imagePath in glob.glob('app/static/mini_data/' + "*.jpg"):
     #add the list of descriptors to
     descriptors[imageID] = features.flatten()
     desc.append(features.flatten())
-    i += 1
-    bar.update(i)
+
+    #i += 1
+    #bar.update(i)
 
 
 d1= desc[0]
@@ -42,20 +43,21 @@ d1 = d1.flatten()
 criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
 # Set flags (Just to avoid line break in the code)
 flags = cv2.KMEANS_RANDOM_CENTERS
-
 # Apply KMeans
 k = 100
 compactness, labels, centers = cv2.kmeans(d1, k, None, criteria, 10, flags)
 
+#construction de l'index
+#on va construire un dictionnaire (id de l'image, liste des labels)
 dico_label = {}
 for id, descriptor in descriptors.items():
     dico_label[id] = labels[:len(descriptor)]
 
+#save the index in file
 with open('app/index_test.txt', 'wb') as handle:
   pickle.dump(dico_label, handle)
 
 
-# close the index file
-bar.finish()
+#bar.finish()
 
 

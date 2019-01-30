@@ -31,29 +31,21 @@ def search():
 
         image_url = request.form.get('img')
         with open('app/index_test.txt', 'rb') as handle:
-            b = pickle.loads(handle.read())
+            index = pickle.loads(handle.read())
         imageID = image_url[image_url.rfind("/") + 1:]
 
         try:
 
-            print("before initialization")
             # initialize the image descriptor
             d = Descriptor()
 
             # load the query image and describe it
-            print(imageID)
             query = cv2.imread(UPLOAD_FOLDER+image_url, cv2.COLOR_BGR2HSV)
-            print("before describe")
-            hist = d.hist(query, b[imageID])
-            print("after describe")
+            hist = d.hist(query, index[imageID])
 
             # perform the search
-
-            print("in search")
-            searcher = Searcher(b, INDEX)
-            print("search finished")
+            searcher = Searcher(index, INDEX)
             results = searcher.search(hist)
-            print("done")
 
             # loop over the results, displaying the score and image name
             for (score, resultID) in results:

@@ -25,6 +25,8 @@ class Descriptor:
         # Calculating the number of occurrences
         idf = np.array(np.log((1.0*len(image)+1) / (1.0*nbr_occurences + 1)), 'float32')
         # Giving weight to one that occurs more frequently
+
+        #Calcul de l'histogramme
         hist = list(labels.flatten())
         compte = {k: hist.count(k) for k in set(hist)}
 

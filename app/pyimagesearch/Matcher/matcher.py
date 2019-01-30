@@ -15,6 +15,7 @@ class Matcher:
             bf = cv2.BFMatcher()
             des = cv2.imread(test,  cv2.COLOR_BGR2HSV)
             des = d.describe(des)
+            #calcul des matchs
             matches = bf.knnMatch(features, des, k=2)
             # Apply ratio test
             good = []
@@ -29,7 +30,8 @@ class Matcher:
         # sort our results, so that the smaller distances (i.e. the
         # more relevant images are at the front of the list)
         results = sorted([(v, k) for (k, v) in results.items()])
-        # return our (limited) results
+        #we keep only the images that have a match >= 30
         results= [(v,k) for (v,k) in results if v >=30]
-        print(results)
+
+        # return our (limited) results
         return results[:limit]
