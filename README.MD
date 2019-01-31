@@ -61,6 +61,8 @@ On peut retrouver l'implémentation complète du code dans la fonction **match**
 Pour lancer l'interface web :
 
     >python app/app_matcher.py
+    
+![Screenshot](img/interface2.png)
  
 # Partie II (Visual Bag Of Words)
 
@@ -99,7 +101,7 @@ Pour lancer le calcul de l'index :
 
     > python app/pyimagesearch/kmeans.py
 
-![Screenshot](img/interface2.png)
+
 
 
 ### Recherche des images
