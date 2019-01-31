@@ -62,7 +62,7 @@ Pour lancer l'interface web :
 
     >python app/app_matcher.py
  
-#Partie II (Visual Bag Of Words)
+# Partie II (Visual Bag Of Words)
 
 ### Construction de l'index
 
